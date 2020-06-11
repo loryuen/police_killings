@@ -72,6 +72,10 @@ body{
   letter-spacing: 4px;
 }
 
+#map {
+    height: 80vh;
+}
+
 /* India Gate Caption */
 small {
   text-align: right;
