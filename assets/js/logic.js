@@ -7,7 +7,7 @@ var myMap = L.map("map", {
   L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
     attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
     maxZoom: 18,
-    id: "mapbox.streets-basic",
+    id: "mapbox.dark",
     accessToken: API_KEY
   }).addTo(myMap);
 
@@ -43,37 +43,35 @@ var myMap = L.map("map", {
 
 d3.csv('assets/data/data_fe_cleaned.csv').then(function(data) {
     console.log(data)
-    var location = []
     data.forEach(function(d) {
+        var location = []
+
         d.Latitude = +d.Latitude
         d.Longitude = +d.Longitude
         var lat = d.Latitude
         var long = d.Longitude
         
-        location.push([d.Latitude, d.Longitude])
-        console.log(location)
+        location.push(d.Latitude, d.Longitude)
+        // console.log(location)
 
-        L.circle(location
-            // , {
-            // fillOpacity: 0.75,
-            // color: "red",
-            // fillColor: "purple",
-            // radius: 500
-            // // radius: markerSize(state.latest.confirmed)
-            // }
-            )
-            // .bindPopup("<h5>" + state.county + ", " + state.province + "</h5> <hr> <h6>Confirmed Cases: " + casesCount + "</h6><br><h6>Deaths: " + state.latest.deaths + "</h6><br><h7>Last Updated: " +  state.last_updated + "</h7>")
+        L.circle(location, {
+                fillOpacity: 0.75,
+                color: "red",
+                fillColor: "black",
+                radius: 40
+                })
+                .bindPopup("<h5>" + d.name + ", " + d.sex + "</h5> <hr> <h6>Race: </h6><h7>" + d.race_imputations + "</h7></h6><br><h6>Age: </h6><h7>" + d.age + "</h7><br><h6>Year Killed: </h6><h7>" + d.year + "</h7><br><h6>Circumstances around death: </h6><h7>" +  d.circumstances_death + "</h7>")
             .addTo(myMap);
 
 
     })
-    console.log(location)
+    // console.log(location)
 
     
     
 
 }
-);
+).catch(e => {console.log(e)});
     
     // var locations = data.locations
     // console.log(locations)
