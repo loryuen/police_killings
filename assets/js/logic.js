@@ -43,11 +43,12 @@ var myMap = L.map("map", {
 
 d3.csv('assets/data/data_fe_cleaned.csv').then(function(data) {
     console.log(data)
+
     data.forEach(function(d) {
         var location = []
-
         d.Latitude = +d.Latitude
         d.Longitude = +d.Longitude
+        d.length = +d.length
         var lat = d.Latitude
         var long = d.Longitude
         

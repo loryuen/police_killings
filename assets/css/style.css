@@ -74,7 +74,13 @@ body{
 
 #map {
     /* height: 80vh; */
-    height: 600px;
+    height: 550px;
+    width: 950px;
+    text-align: center;
+}
+
+#plot {
+    height: 550px;
     width: 950px;
     text-align: center;
 }
