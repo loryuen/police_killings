@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# google sheet
+poli-281921-dd47d7262451.json
+
 # C extensions
 *.so
 
